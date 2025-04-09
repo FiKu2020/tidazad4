@@ -17,10 +17,9 @@ class AudioControls:
         if self.playlista:
             self.load_song(self.playlista[self.index_piosenki])
 
-    def load_song(self, filename):
-        self.current_file = os.path.join(self.folder_muzyki, filename)
-        self.channel.load(self.current_file)
-        self.audio = MP3(self.current_file)
+    def load_song(self):
+        self.channel.load(self.playlista)
+        self.audio = MP3(self.playlista)
 
     def play(self):
         self.channel.play()
@@ -63,3 +62,7 @@ class AudioControls:
 
     def is_playing(self):
         return pygame.mixer.music.get_busy()
+
+cos = AudioControls()
+cos2 = cos.load_song()
+cos.play(cos2)
